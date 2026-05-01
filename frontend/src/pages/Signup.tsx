@@ -15,7 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5001/api/auth/register', { name, email, password, role });
+      const res = await axios.post('/api/auth/register', { name, email, password, role });
       login(res.data.token, res.data.user);
       navigate('/');
     } catch (err: any) {
@@ -59,3 +59,4 @@ const Signup = () => {
 };
 
 export default Signup;
+

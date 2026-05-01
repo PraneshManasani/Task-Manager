@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5001/api/auth/login', { email, password });
+      const res = await axios.post('/api/auth/login', { email, password });
       login(res.data.token, res.data.user);
       navigate('/');
     } catch (err: any) {
@@ -46,3 +46,4 @@ const Login = () => {
 };
 
 export default Login;
+

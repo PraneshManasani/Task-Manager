@@ -20,7 +20,7 @@ const Projects = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/projects', {
+      const res = await axios.get('/api/projects', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProjects(res.data);
@@ -36,7 +36,7 @@ const Projects = () => {
   const handleCreateProject = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5001/api/projects', { name, description }, {
+      await axios.post('/api/projects', { name, description }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setShowModal(false);
@@ -101,3 +101,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

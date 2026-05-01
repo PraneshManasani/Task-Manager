@@ -33,7 +33,7 @@ const ProjectDetails = () => {
 
   const fetchProject = async () => {
     try {
-      const res = await axios.get(`http://localhost:5001/api/projects/${id}`, {
+      const res = await axios.get(`/api/projects/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProject(res.data);
@@ -44,7 +44,7 @@ const ProjectDetails = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get(`http://localhost:5001/api/auth/users`, {
+      const res = await axios.get(`/api/auth/users`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(res.data);
@@ -79,11 +79,11 @@ const ProjectDetails = () => {
     e.preventDefault();
     try {
       if (isEditing) {
-        await axios.patch(`http://localhost:5001/api/tasks/${editingTaskId}`, {
+        await axios.patch(`/api/tasks/${editingTaskId}`, {
           title, description, assigneeId: assigneeId || null, dueDate: dueDate ? new Date(dueDate).toISOString() : null
         }, { headers: { Authorization: `Bearer ${token}` } });
       } else {
-        await axios.post('http://localhost:5001/api/tasks', {
+        await axios.post('/api/tasks', {
           title, description, projectId: id, assigneeId: assigneeId || null, dueDate: dueDate ? new Date(dueDate).toISOString() : null
         }, { headers: { Authorization: `Bearer ${token}` } });
       }
@@ -96,7 +96,7 @@ const ProjectDetails = () => {
 
   const updateTaskStatus = async (taskId: string, status: string) => {
     try {
-      await axios.patch(`http://localhost:5001/api/tasks/${taskId}`, { status }, {
+      await axios.patch(`/api/tasks/${taskId}`, { status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchProject();
@@ -108,7 +108,7 @@ const ProjectDetails = () => {
   const deleteTask = async (taskId: string) => {
     if (!window.confirm("Are you sure you want to delete this task?")) return;
     try {
-      await axios.delete(`http://localhost:5001/api/tasks/${taskId}`, {
+      await axios.delete(`/api/tasks/${taskId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchProject();
@@ -266,3 +266,4 @@ const ProjectDetails = () => {
 };
 
 export default ProjectDetails;
+

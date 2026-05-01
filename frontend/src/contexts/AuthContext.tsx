@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         return;
       }
       try {
-        const res = await axios.get('http://localhost:5001/api/auth/me', {
+        const res = await axios.get('/api/auth/me', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUser(res.data.user);
@@ -71,3 +71,4 @@ export const useAuth = () => {
   }
   return context;
 };
+

@@ -21,7 +21,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await axios.get('http://localhost:5001/api/dashboard/stats', {
+        const res = await axios.get('/api/dashboard/stats', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setStats(res.data);
@@ -117,3 +117,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
